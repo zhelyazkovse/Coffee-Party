@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Produkter | Kaffeparty</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Kaffeparty</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Hem</a></li>
+          <li class="nav-item"><a class="nav-link active" href="produkter.html">Produkter</a></li>
+          <li class="nav-item"><a class="nav-link" href="om-oss.html">Om oss</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <ul class="nav nav-tabs" id="kaffepartyTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="foretag-tab" data-bs-toggle="tab" data-bs-target="#foretag" type="button" role="tab">Företag</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="privat-tab" data-bs-toggle="tab" data-bs-target="#privat" type="button" role="tab">Privatpersoner</button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container mt-4">
+    <section>
+      <h2>Kaffemaskiner</h2>
+      <div class="row" id="machine-list">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://picsum.photos/300/200" class="card-img-top" alt="Kaffemaskin 1">
+            <div class="card-body">
+              <h5 class="card-title">Kaffemaskin Model Siemens EQ700</h5>
+              <p class="card-text">En enkel och effektiv kaffemaskin för företag. Gör 10 koppar på en gång.</p>
+              <p class="price" data-base-price="2999">Pris: 2999 SEK</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://picsum.photos/300/200" class="card-img-top" alt="Kaffemaskin 2">
+            <div class="card-body">
+              <h5 class="card-title">Kaffemaskin Model Siemens EQ500</h5>
+              <p class="card-text">Professionell maskin för kaffebarer. Gör upp till 20 koppar per gång.</p>
+              <p class="price" data-base-price="4999">Pris: 4999 SEK</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://picsum.photos/300/200" class="card-img-top" alt="Kaffemaskin 3">
+            <div class="card-body">
+              <h5 class="card-title">Kaffemaskin Model Siemens EQ9 plus</h5>
+              <p class="card-text">Perfekt för större företag. Automatisk malning och bryggning.</p>
+              <p class="price" data-base-price="7999">Pris: 7999 SEK</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 d-none" id="gaggenau-card">
+          <div class="card">
+            <img src="https://picsum.photos/300/200?gaggenau" class="card-img-top" alt="Gaggenau Serie 200">
+            <div class="card-body">
+              <h5 class="card-title">Kaffemaskin Model Gaggenau Serie 200</h5>
+              <p class="card-text">Lyxig kaffemaskin för exklusiva företagsmiljöer. Hög kapacitet och elegant design.</p>
+              <p class="price" data-base-price="61000">Pris: 61000 SEK</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="my-5">
+      <h2>Kaffeparty</h2>
+      <div class="tab-pane fade show active" id="foretag" role="tabpanel">
+        <p>Vårt kaffeparty-paket för företag inkluderar kaffeprovningar, choklad och ett urval av bakverk. Perfekt för team-building eller kundevent.</p>
+        <ul>
+          <li><strong>Kaffesorter:</strong> Espresso Roast, Colombia Single Origin, House Blend</li>
+          <li><strong>Choklad:</strong> Mörk choklad 70%, Hasselnötspraliner</li>
+          <li><strong>Bakverk:</strong> Kanelbullar, Croissanter, Chokladmuffins</li>
+        </ul>
+      </div>
+      <div class="tab-pane fade" id="privat" role="tabpanel">
+        <p>Vårt paket för privatpersoner ger en rolig och smakfull upplevelse med kaffesorter och choklad i en avslappnad miljö.</p>
+        <ul>
+          <li><strong>Kaffesorter:</strong> Vanilj Latte, Karamell Cappuccino</li>
+          <li><strong>Choklad:</strong> Mjölkchoklad med mandel, Vit chokladtryffel</li>
+        </ul>
+      </div>
+      
+      </div>
+    </section>
+  </div>
+
+  <footer class="bg-dark text-white text-center p-3 mt-5">
+    © 2025 Kaffeparty | Webmaster: Z.Zhelyazkov
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script>
+    const prices = document.querySelectorAll('.price');
+    const gaggenauCard = document.getElementById('gaggenau-card');
+
+    function updatePrices(isForetag) {
+      prices.forEach(p => {
+        const base = parseInt(p.dataset.basePrice);
+        const newPrice = isForetag ? base - 1000 : base;
+        p.textContent = `Pris: ${newPrice} SEK`;
+      });
+
+      if (isForetag) {
+        gaggenauCard.classList.remove('d-none');
+      } else {
+        gaggenauCard.classList.add('d-none');
+      }
+    }
+
+    document.getElementById('foretag-tab').addEventListener('click', () => {
+      updatePrices(true);
+    });
+
+    document.getElementById('privat-tab').addEventListener('click', () => {
+      updatePrices(false);
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      updatePrices(true);
+    });
+  </script>
+</body>
+</html>
